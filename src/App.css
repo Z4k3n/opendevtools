@@ -2,6 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
+:root {
+  --button-light-background: #fff; /* Color de fondo en modo claro */
+  --button-light-text: #382b22; /* Color del texto en modo claro */
+  --button-dark-background: #382b22; /* Color de fondo en modo oscuro */
+  --button-dark-text: #fff; /* Color del texto en modo oscuro */
+}
+
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -48,64 +56,28 @@
 }
 
 button {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  outline: none;
-  border: 0;
-  vertical-align: middle;
-  text-decoration: none;
   font-family: inherit;
-  font-size: 19px;
+  padding: 1em 3em;
+  font-weight: 900;
+  font-size: 0.75em;
+  border: 3px solid black;
+  border-radius: 0.4em;
+  box-shadow: 0.1em 0.1em;
+  cursor: pointer;
+  background-color: #7c8ba9;
+  min-width: 11em;
 }
 
-button.learn-more {
-  font-weight: 600;
-  color: #382b22;
-  text-transform: uppercase;
-  padding: 1.25em 2em;
-  background: #fff0f0;
-  border: 2px solid #b18597;
-  border-radius: 0.75em;
-  transform-style: preserve-3d;
-  transition: background 150ms cubic-bezier(0, 0, 0.58, 1), transform 150ms cubic-bezier(0, 0, 0.58, 1);
+button:hover {
+  transform: translate(-0.05em, -0.05em);
+  box-shadow: 0.15em 0.15em;
 }
 
-button.learn-more::before {
-  position: absolute;
-  content: '';
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #f9c4d2;
-  border-radius: inherit;
-  box-shadow: 0 0 0 2px #b18597; /* Adjusted box-shadow to remove extra shadow */
-  transform: translate3d(0, 0.75em, -1em);
-  transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+button:active {
+  transform: translate(0.05em, 0.05em);
+  box-shadow: 0.05em 0.05em;
 }
 
-button.learn-more:hover {
-  background: #ffe9e9;
-  transform: translate(0, 0.25em);
-}
-
-button.learn-more:hover::before {
-  box-shadow: 0 0 0 2px #b18597; /* Adjusted box-shadow to remove extra shadow */
-  transform: translate3d(0, 0.5em, -1em);
-}
-
-button.learn-more:active {
-  background: #ffe9e9;
-  transform: translate(0em, 0.75em);
-}
-
-button.learn-more:active::before {
-  box-shadow: 0 0 0 2px #b18597; /* Adjusted box-shadow to remove extra shadow */
-  transform: translate3d(0, 0, -1em);
-}
 
 .grid-container {
   display: grid;
@@ -194,7 +166,10 @@ button.learn-more:active::before {
 
 
 main{
-  margin-bottom: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
 }
 
 /* Define styles for the light mode footer */
@@ -268,34 +243,8 @@ main{
   text-decoration: underline;
 }
 
-.back-to-home {
-  display: none; /* Oculta el botón por defecto */
-
-  padding: 10px 20px 10px 20px;
-
-  font-weight: 600;
-  color: #382b22;
-  text-transform: uppercase;
-  background: #fff0f0;
-  border: 2px solid #b18597;
-  border-radius: 0.75em;
-  transform-style: preserve-3d;
-  transition: background 150ms cubic-bezier(0, 0, 0.58, 1), transform 150ms cubic-bezier(0, 0, 0.58, 1);
-  animation: fadeIn 0.3s ease-in forwards;
-}
-
-/* Define los estilos para el modo claro */
-.light-mode .back-to-home {
-  background-color: #fff; /* Color de fondo en modo claro */
-  color: #282c34; /* Color del texto en modo claro */
-  border-color: #ccc; /* Color del borde en modo claro */
-}
-
-/* Define los estilos para el modo oscuro */
-.dark-mode .back-to-home {
-  background-color: #282c34; /* Color de fondo en modo oscuro */
-  color: #fff; /* Color del texto en modo oscuro */
-  border-color: #4fd1c5; /* Color del borde en modo oscuro */
+.back-to-home{
+  padding: 0.75em 1.50em 0.75em 1.50em;
 }
 
 @media (max-width: 1200px) {
@@ -311,28 +260,4 @@ main{
 }
 
 @media (max-width: 600px) {
-  .back-to-home {
-    display: block; /* Muestra el botón en versión móvil */
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
-    border-radius: 50%; /* Hace que el botón sea completamente circular */
-    width: 80px;
-    height: 80px;
-    text-align: center;
-    font-size: 30px;
-    min-width: unset;
-  }
-
-  .back-to-home::before {
-    content: "\f015"; /* Código Unicode de Font Awesome para el icono de casa */
-    font-family: "Font Awesome 5 Free"; /* Nombre de la fuente de Font Awesome */
-    font-weight: 900; /* Peso de la fuente (puede variar según la versión de Font Awesome) */
-  }
-
-  .back-to-home span {
-    display: none; /* Oculta el texto en dispositivos móviles */
-  }
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import WebElementsTable from './WebElementsTable'; // Importa el componente
+import WebElementsTable from './components/WebElementsTable'; // Importa el componente
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -34,18 +34,38 @@ function App() {
         </div>
       </nav>
 
-      <header className="App-header fade-in" style={{ animationDelay: '0s' }}>
+      <header className="App-header fade-in" style={{ animationDelay: '0.2s' }}>
         <h2>Empowering Developers Everywhere</h2>
         <p>Discover a vast collection of free, open-source resources designed to elevate your projects. Start building better, faster, and smarter today!</p>
       </header>
       <main>
         {showDefaultContent ? (
-          <div className="grid-container fade-in">
-            <div className="grid-item fade-in" style={{ animationDelay: '0.2s' }}>
-              <button className="learn-more" onClick={toggleWebElements}>Web Elements</button>
+           <div className="grid-container fade-in">
+           <div className="grid-item fade-in" style={{ animationDelay: '0.2s' }}>
+              <button onClick={toggleWebElements}>Web Elements</button>
             </div>
-            {/* Renderiza el resto de botones aquí */}
-          </div>
+           <div className="grid-item fade-in" style={{ animationDelay: '0.4s' }}>
+             <button >APIs</button>
+           </div>
+           <div className="grid-item fade-in" style={{ animationDelay: '0.6s' }}>
+             <button >IDEs & Editors</button>
+           </div>
+           <div className="grid-item fade-in" style={{ animationDelay: '0.8s' }}>
+             <button >Courses</button>
+           </div>
+           <div className="grid-item fade-in" style={{ animationDelay: '1s' }}>
+             <button >Databases</button>
+           </div>
+           <div className="grid-item fade-in" style={{ animationDelay: '1.2s' }}>
+             <button >Design Tools</button>
+           </div>
+           <div className="grid-item fade-in" style={{ animationDelay: '1.4s' }}>
+             <button >Hosting</button>
+           </div>
+           <div className="grid-item fade-in" style={{ animationDelay: '1.6s' }}>
+             <button >Forums</button>
+           </div>
+         </div>
         ) : (
           <WebElementsTable />
         )}
@@ -53,8 +73,7 @@ function App() {
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section">
-            <img src="/path/to/your/logo.png" className="logo" alt="Logo" />
-            <p>Universe of UI; Hundreds of Open Source UI elements</p>
+            <p>Check out what the Open Source community has to offer. Thanks for visiting!</p>
           </div>
           <div className="footer-section">
             <ul className="legal-links">
