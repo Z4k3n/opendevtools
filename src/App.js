@@ -1,16 +1,22 @@
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
   return (
-    <div className="App fade-in">
+    <div className={`App ${darkMode ? 'dark-mode' : 'light-mode'} fade-in`}>
       <nav className="navbar">
         <div className="navbar-brand">OpenDevTools</div>
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider"></span>
+        <label className="switch">
+          <input type="checkbox" onChange={toggleDarkMode} />
+          <span className="slider"></span>
         </label>
       </nav>
-
       <header className="App-header fade-in" style={{ animationDelay: '0s' }}>
         <h2>Empowering Developers Everywhere</h2>
         <p>Discover a vast collection of free, open-source resources designed to elevate your projects. Start building better, faster, and smarter today!</p>

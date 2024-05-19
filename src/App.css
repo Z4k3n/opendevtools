@@ -26,6 +26,16 @@
   color: #282c34;
 }
 
+.light-mode {
+  background-color: #f5f5f5;
+  color: #282c34;
+}
+
+.dark-mode {
+  background-color: #282c34;
+  color: white;
+}
+
 .App-header {
   text-align: center;
   text-justify: auto;
@@ -153,7 +163,7 @@ button {
   left: 0;
   right: 0;
   bottom: 0px;
-  background: #fff;
+  background: #282c34;
   transition: .4s;
   border-radius: 30px;
   border: 1px solid #ccc;
@@ -174,13 +184,18 @@ button {
  }
  
  input:checked + .slider {
-  background-color: #282c34;
+  background-color: #fff;
   border: 1px solid transparent;
  }
  
  input:checked + .slider:before {
   transform: translateX(1.5em);
  }
+
+
+main{
+  margin-bottom: 60px;
+}
 
 @media (max-width: 1200px) {
   .grid-container {
