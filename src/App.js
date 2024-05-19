@@ -49,6 +49,23 @@ function App() {
           </div>
         </div>
       </main>
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-section">
+            <img src="/path/to/your/logo.png" className="logo" alt="Logo" />
+            <p>Universe of UI; Hundreds of Open Source UI elements</p>
+          </div>
+          <div className="footer-section">
+            <ul className="legal-links"> {/* Agrega una clase a la lista */}
+              <li><a href="/terms-and-conditions" target="_blank" rel="noreferrer">Terms and Conditions</a></li>
+              <li><a href="/privacy-policy" target="_blank" rel="noreferrer">Privacy Policy</a></li>
+              <li><a href="/cookie-policy" target="_blank" rel="noreferrer">Cookie Policy</a></li>
+              <li><a href="/disclaimer" target="_blank" rel="noreferrer">Disclaimer</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+
     </div>
   );
 }
