@@ -7,7 +7,67 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [showWebElements, setShowWebElements] = useState(false);
   const [showDefaultContent, setShowDefaultContent] = useState(true); 
+  const [categoryElements, setCategoryElements] = useState([]); // Estado para almacenar elementos por categoría
   const { headerText, headerSubtext, updateHeaderText, categoryHeaders } = HeaderHandler(); // Utiliza el HeaderHandler
+
+  // Define elementsByCategory dentro del componente App
+const elementsByCategory = {
+  "Web Elements": [
+    { name: "Uiverse.io", description: "Open-Source UI elements for any project. Create, share, and use beautiful custom elements made with CSS or Tailwind.", url: "https://uiverse.io/" },
+    { name: "Bootstrap", description: "CSS, HTML, and JS framework for developing responsive and mobile-first interfaces.", url: "https://getbootstrap.com/" },
+    { name: "Font Awesome", description: "Collection of scalable icons.", url: "https://fontawesome.com/" },
+    { name: "Tailwind CSS", description: "Highly customizable utility-first CSS framework.", url: "https://tailwindcss.com/" },
+    { name: "Animate.css", description: "Library for simple CSS animations.", url: "https://animate.style/" },
+    { name: "React Icons", description: "Library containing popular icons for React applications.", url: "https://react-icons.github.io/react-icons/" },
+    { name: "Lodash", description: "Utility library delivering consistency, modularity, and performance to your JS code.", url: "https://lodash.com/" },
+    { name: "React Router", description: "Declarative routing for React applications.", url: "https://reactrouter.com/" },
+    { name: "Jest", description: "Delightful JavaScript testing framework with a focus on simplicity.", url: "https://jestjs.io/" }
+  ],
+  "APIs": [
+    { name: "OpenWeatherMap API", description: "Weather data API providing current weather data, forecasts, and historical data.", url: "https://openweathermap.org/api" },
+    { name: "GitHub API", description: "API for accessing GitHub data like repositories, users, and organizations.", url: "https://docs.github.com/en/rest" },
+    { name: "REST Countries", description: "API providing information about countries including name, population, languages, and more.", url: "https://restcountries.com/" },
+    { name: "Chuck Norris API", description: "API for Chuck Norris jokes and facts.", url: "https://api.chucknorris.io/" }
+  ],
+  "IDEs & Editors": [
+    { name: "Visual Studio Code", description: "Free source-code editor developed by Microsoft.", url: "https://code.visualstudio.com/" },
+    { name: "Atom", description: "Open-source text editor developed by GitHub.", url: "https://atom.io/" },
+    { name: "Sublime Text", description: "Sophisticated text editor for code, markup, and prose.", url: "https://www.sublimetext.com/" },
+    { name: "Vim", description: "Highly configurable text editor built to make creating and changing any kind of text very efficient.", url: "https://www.vim.org/" }
+  ],
+  "Courses": [
+    { name: "freeCodeCamp", description: "Learn to code at your own pace with thousands of free courses.", url: "https://www.freecodecamp.org/" },
+    { name: "Coursera", description: "Access to courses, specializations, and degrees offered by universities and companies.", url: "https://www.coursera.org/" },
+    { name: "edX", description: "Online learning platform offering university-level courses in a wide range of disciplines.", url: "https://www.edx.org/" },
+    { name: "Codecademy", description: "Interactive platform that offers coding classes in various programming languages.", url: "https://www.codecademy.com/" }
+  ],
+  "Databases": [
+    { name: "MongoDB", description: "Document-oriented NoSQL database program.", url: "https://www.mongodb.com/" },
+    { name: "MySQL", description: "Open-source relational database management system.", url: "https://www.mysql.com/" },
+    { name: "PostgreSQL", description: "Object-relational database system known for its reliability and robustness.", url: "https://www.postgresql.org/" },
+    { name: "SQLite", description: "Serverless SQL database engine.", url: "https://www.sqlite.org/index.html" }
+  ],
+  "Design Tools": [
+    { name: "Figma", description: "Collaborative interface design tool.", url: "https://www.figma.com/" },
+    { name: "Inkscape", description: "Open-source vector graphics editor.", url: "https://inkscape.org/" },
+    { name: "GIMP", description: "Free and open-source raster graphics editor.", url: "https://www.gimp.org/" },
+    { name: "Canva", description: "Graphic design platform with a drag-and-drop interface and a library of templates.", url: "https://www.canva.com/" }
+  ],
+  "Hosting": [
+    { name: "Netlify", description: "Build, deploy, and manage modern web projects.", url: "https://www.netlify.com/" },
+    { name: "Vercel", description: "Deploy web projects with the speed, scale, and reliability of Vercel's global edge network.", url: "https://vercel.com/" },
+    { name: "GitHub Pages", description: "Host your static site or blog directly from your GitHub repository.", url: "https://pages.github.com/" },
+    { name: "Firebase Hosting", description: "Web hosting for modern web apps.", url: "https://firebase.google.com/products/hosting" }
+  ],
+  "Forums": [
+    { name: "Stack Overflow", description: "Question and answer site for professional and enthusiast programmers.", url: "https://stackoverflow.com/" },
+    { name: "GitHub Discussions", description: "Community forum for GitHub users to discuss projects, topics, and more.", url: "https://github.com/features/discussions" },
+    { name: "Dev.to", description: "Community of software developers sharing knowledge and ideas.", url: "https://dev.to/" },
+    { name: "Reddit r/programming", description: "Subreddit for discussions about programming.", url: "https://www.reddit.com/r/programming/" }
+  ]
+  // Agrega más categorías y elementos aquí
+};
+
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
@@ -17,6 +77,7 @@ function App() {
     setShowDefaultContent(false); 
     setShowWebElements(true);
     updateHeaderText(category, categoryHeaders[category]);
+    setCategoryElements(elementsByCategory[category] || []); // Actualiza los elementos de la categoría seleccionada o vacío si no hay elementos
   };
 
   const toggleDefaultContent = () => {
@@ -45,33 +106,16 @@ function App() {
       <main>
         {showDefaultContent ? (
            <div className="grid-container fade-in">
-           <div className="grid-item fade-in" >
-              <button onClick={() => toggleCategory("Web Elements")}><h3>Web Elements</h3></button>
-            </div>
-            <div className="grid-item fade-in">
-              <button onClick={() => toggleCategory("APIs")}><h3>APIs</h3></button>
+             {/* Renderiza botones para cada categoría */}
+             {Object.keys(elementsByCategory).map(category => (
+               <div className="grid-item fade-in" key={category}>
+                 <button onClick={() => toggleCategory(category)}><h3>{category}</h3></button>
+               </div>
+             ))}
            </div>
-           <div className="grid-item fade-in">
-              <button onClick={() => toggleCategory("IDEs & Editors")}><h3>IDEs & Editors</h3></button>
-           </div>
-           <div className="grid-item fade-in">
-              <button onClick={() => toggleCategory("Courses")}><h3>Courses</h3></button>
-           </div>
-           <div className="grid-item fade-in">
-              <button onClick={() => toggleCategory("Databases")}><h3>Databases</h3></button>
-           </div>
-           <div className="grid-item fade-in">
-              <button onClick={() => toggleCategory("Design Tools")}><h3>Design Tools</h3></button>
-           </div>
-           <div className="grid-item fade-in">
-              <button onClick={() => toggleCategory("Hosting")}><h3>Hosting</h3></button>
-           </div>
-           <div className="grid-item fade-in">
-              <button onClick={() => toggleCategory("Forums")}><h3>Forums</h3></button>
-           </div>
-         </div>
         ) : (
-          <WebElementsTable />
+          // Renderiza la tabla con los elementos de la categoría seleccionada
+          <WebElementsTable elements={categoryElements} />
         )}
       </main>
       <footer className="footer">
