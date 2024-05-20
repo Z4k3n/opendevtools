@@ -1,24 +1,28 @@
 import React, { useState } from 'react';
 import './App.css';
 import WebElementsTable from './components/WebElementsTable'; // Importa el componente
+import HeaderHandler from './components/HeaderHandler'; // Importa el manejador del encabezado
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [showWebElements, setShowWebElements] = useState(false);
-  const [showDefaultContent, setShowDefaultContent] = useState(true); // Nuevo estado para controlar la visualización del contenido predeterminado
+  const [showDefaultContent, setShowDefaultContent] = useState(true); 
+  const { headerText, headerSubtext, updateHeaderText, categoryHeaders } = HeaderHandler(); // Utiliza el HeaderHandler
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
   };
 
-  const toggleWebElements = () => {
-    setShowWebElements(!showWebElements);
-    setShowDefaultContent(false); // Al hacer clic en "Web Elements", oculta el contenido predeterminado
+  const toggleCategory = (category) => {
+    setShowDefaultContent(false); 
+    setShowWebElements(true);
+    updateHeaderText(category, categoryHeaders[category]);
   };
 
   const toggleDefaultContent = () => {
-    setShowDefaultContent(true); // Al hacer clic en el botón de inicio, muestra el contenido predeterminado
-    setShowWebElements(false); // Oculta la tabla de elementos web cuando se muestra el contenido predeterminado
+    setShowDefaultContent(true); 
+    setShowWebElements(false); 
+    updateHeaderText("Empowering Developers Everywhere", "Discover a vast collection of free, open-source resources designed to elevate your projects. Start building better, faster, and smarter today!");
   };
 
   return (
@@ -34,36 +38,36 @@ function App() {
         </div>
       </nav>
 
-      <header className="App-header fade-in" style={{ animationDelay: '0.2s' }}>
-        <h2>Empowering Developers Everywhere</h2>
-        <p>Discover a vast collection of free, open-source resources designed to elevate your projects. Start building better, faster, and smarter today!</p>
+      <header className="App-header fade-in">
+        <h1>{headerText}</h1>
+        <h2>{headerSubtext}</h2>
       </header>
       <main>
         {showDefaultContent ? (
            <div className="grid-container fade-in">
-           <div className="grid-item fade-in" style={{ animationDelay: '0.2s' }}>
-              <button onClick={toggleWebElements}>Web Elements</button>
+           <div className="grid-item fade-in" >
+              <button onClick={() => toggleCategory("Web Elements")}><h3>Web Elements</h3></button>
             </div>
-           <div className="grid-item fade-in" style={{ animationDelay: '0.4s' }}>
-             <button >APIs</button>
+            <div className="grid-item fade-in">
+              <button onClick={() => toggleCategory("APIs")}><h3>APIs</h3></button>
            </div>
-           <div className="grid-item fade-in" style={{ animationDelay: '0.6s' }}>
-             <button >IDEs & Editors</button>
+           <div className="grid-item fade-in">
+              <button onClick={() => toggleCategory("IDEs & Editors")}><h3>IDEs & Editors</h3></button>
            </div>
-           <div className="grid-item fade-in" style={{ animationDelay: '0.8s' }}>
-             <button >Courses</button>
+           <div className="grid-item fade-in">
+              <button onClick={() => toggleCategory("Courses")}><h3>Courses</h3></button>
            </div>
-           <div className="grid-item fade-in" style={{ animationDelay: '1s' }}>
-             <button >Databases</button>
+           <div className="grid-item fade-in">
+              <button onClick={() => toggleCategory("Databases")}><h3>Databases</h3></button>
            </div>
-           <div className="grid-item fade-in" style={{ animationDelay: '1.2s' }}>
-             <button >Design Tools</button>
+           <div className="grid-item fade-in">
+              <button onClick={() => toggleCategory("Design Tools")}><h3>Design Tools</h3></button>
            </div>
-           <div className="grid-item fade-in" style={{ animationDelay: '1.4s' }}>
-             <button >Hosting</button>
+           <div className="grid-item fade-in">
+              <button onClick={() => toggleCategory("Hosting")}><h3>Hosting</h3></button>
            </div>
-           <div className="grid-item fade-in" style={{ animationDelay: '1.6s' }}>
-             <button >Forums</button>
+           <div className="grid-item fade-in">
+              <button onClick={() => toggleCategory("Forums")}><h3>Forums</h3></button>
            </div>
          </div>
         ) : (

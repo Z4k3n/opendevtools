@@ -57,7 +57,6 @@
 
 button {
   font-family: inherit;
-  padding: 1em 3em;
   font-weight: 900;
   font-size: 0.75em;
   border: 3px solid black;
@@ -170,6 +169,7 @@ main{
   align-items: center;
   justify-content: center;
   margin-bottom: 50px;
+  width: 100%;
 }
 
 /* Define styles for the light mode footer */
@@ -244,6 +244,7 @@ main{
 }
 
 .back-to-home{
+  min-width: unset !important;
   padding: 0.75em 1.50em 0.75em 1.50em;
 }
 
@@ -260,4 +261,7 @@ main{
 }
 
 @media (max-width: 600px) {
+  .back-to-home{
+    padding: 0.50em 1em 0.50em 1em;
+  }
 }
