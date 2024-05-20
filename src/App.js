@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import './App.css';
-import WebElementsTable from './components/WebElementsTable'; // Importa el componente
-import HeaderHandler from './components/HeaderHandler'; // Importa el manejador del encabezado
+import WebElementsTable from './components/WebElementsTable';
+import HeaderHandler from './components/HeaderHandler';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [showWebElements, setShowWebElements] = useState(false);
   const [showDefaultContent, setShowDefaultContent] = useState(true); 
-  const [categoryElements, setCategoryElements] = useState([]); // Estado para almacenar elementos por categoría
-  const { headerText, headerSubtext, updateHeaderText, categoryHeaders } = HeaderHandler(); // Utiliza el HeaderHandler
+  const [categoryElements, setCategoryElements] = useState([]);
+  const { headerText, headerSubtext, updateHeaderText, categoryHeaders } = HeaderHandler();
 
-  // Define elementsByCategory dentro del componente App
 const elementsByCategory = {
   "Web Elements": [
     { name: "Uiverse.io", description: "Open-Source UI elements for any project. Create, share, and use beautiful custom elements made with CSS or Tailwind.", url: "https://uiverse.io/" },
@@ -20,14 +19,17 @@ const elementsByCategory = {
     { name: "Animate.css", description: "Library for simple CSS animations.", url: "https://animate.style/" },
     { name: "React Icons", description: "Library containing popular icons for React applications.", url: "https://react-icons.github.io/react-icons/" },
     { name: "Lodash", description: "Utility library delivering consistency, modularity, and performance to your JS code.", url: "https://lodash.com/" },
-    { name: "React Router", description: "Declarative routing for React applications.", url: "https://reactrouter.com/" },
     { name: "Jest", description: "Delightful JavaScript testing framework with a focus on simplicity.", url: "https://jestjs.io/" }
   ],
   "APIs": [
     { name: "OpenWeatherMap API", description: "Weather data API providing current weather data, forecasts, and historical data.", url: "https://openweathermap.org/api" },
     { name: "GitHub API", description: "API for accessing GitHub data like repositories, users, and organizations.", url: "https://docs.github.com/en/rest" },
     { name: "REST Countries", description: "API providing information about countries including name, population, languages, and more.", url: "https://restcountries.com/" },
-    { name: "Chuck Norris API", description: "API for Chuck Norris jokes and facts.", url: "https://api.chucknorris.io/" }
+    { name: "Chuck Norris API", description: "API for Chuck Norris jokes and facts.", url: "https://api.chucknorris.io/" },
+    { name: "The Dog API", description: "API for random pictures of dogs.", url: "https://thedogapi.com/" },
+    { name: "NASA API", description: "API for accessing various NASA data including astronomy, earth science, and space imagery.", url: "https://api.nasa.gov/" },
+    { name: "Unsplash API", description: "API for high-quality, free images.", url: "https://unsplash.com/developers" },
+    { name: "Twilio API", description: "API for building communication apps including SMS, voice, and video.", url: "https://www.twilio.com/docs/usage/api" }
   ],
   "IDEs & Editors": [
     { name: "Visual Studio Code", description: "Free source-code editor developed by Microsoft.", url: "https://code.visualstudio.com/" },
@@ -65,7 +67,6 @@ const elementsByCategory = {
     { name: "Dev.to", description: "Community of software developers sharing knowledge and ideas.", url: "https://dev.to/" },
     { name: "Reddit r/programming", description: "Subreddit for discussions about programming.", url: "https://www.reddit.com/r/programming/" }
   ]
-  // Agrega más categorías y elementos aquí
 };
 
 
@@ -77,7 +78,7 @@ const elementsByCategory = {
     setShowDefaultContent(false); 
     setShowWebElements(true);
     updateHeaderText(category, categoryHeaders[category]);
-    setCategoryElements(elementsByCategory[category] || []); // Actualiza los elementos de la categoría seleccionada o vacío si no hay elementos
+    setCategoryElements(elementsByCategory[category] || []);
   };
 
   const toggleDefaultContent = () => {
@@ -114,15 +115,13 @@ const elementsByCategory = {
              ))}
            </div>
         ) : (
-          // Renderiza la tabla con los elementos de la categoría seleccionada
           <WebElementsTable elements={categoryElements} />
         )}
       </main>
       <footer className="footer">
         <div className="footer-content">
           <div className="footer-section">
-            <p>Check out what the Open Source community has to offer. Thanks for visiting!</p>
-          </div>
+          <p>Discover the endless possibilities of the Open Source community. Dive into a world of innovation and collaboration with these curated resources. From cutting-edge frameworks to essential APIs and everything in between, there's something here for every developer. Be sure to drop by regularly to stay updated on the latest additions. Thanks for joining us on this journey!</p></div>
           <div className="footer-section">
             <ul className="legal-links">
               <li><a href="/terms-and-conditions" target="_blank" rel="noreferrer">Terms and Conditions</a></li>
